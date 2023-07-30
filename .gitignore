@@ -31,3 +31,7 @@ Temporary Items
 .crt
 .csr
 .pem
+
+# ignore AutoML generated HTML report (as they are sometimes huge, depending on the size of the original CSV file).
+./staticFiles/uploads/ml_output.html
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Visualization</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>CSV Visualization</h1>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv">
+        <input type="submit" value="Upload">
+    </form>
+    {% if success %}
+        <div class="success-message">
+            File uploaded successfully!
+        </div>
+    {% endif %}
+    <div class="charts">
+        <h2>Bar Chart</h2>
+        <img src="{{ url_for('static', filename='bar_chart.png') }}" alt="Bar Chart">
+        <h2>Line Chart</h2>
+        <img src="{{ url_for('static', filename='line_chart.png') }}" alt="Line Chart">
+    </div>
+</body>
+</html>
