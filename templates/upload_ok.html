@@ -8,6 +8,10 @@
 		<input type="file" name="file" accept=".csv">
 		<input type = "submit" value="Upload">
 	</form>
+	<form method = "POST" enctype="multipart/form-data" action = "/upload_ml">
+		<input type="file" name="file" accept=".csv">
+		<input type = "submit" value="AI Upload">
+	</form>
 	<p style="color:green;"> File uploaded successfully!! </p>
 <form action="/show_data" target="_blank">
 		<input type="submit" value="Show CSV"/>

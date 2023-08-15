@@ -39,6 +39,36 @@ def uploadFile():
 	return render_template("./upload.html")
 
 
+@app.route('/upload_ml', methods=['GET', 'POST'])
+def upload_ml_file():
+	if request.method == 'POST':
+	# upload file flask
+		f = request.files.get('file')
+
+		# Extracting uploaded file name
+		data_filename = secure_filename(f.filename)
+
+		f.save(os.path.join(app.config['UPLOAD_FOLDER'],
+							data_filename))
+		global filename
+		filename = data_filename
+		session['uploaded_data_file_path'] = './staticFiles/uploads/{}'.format(filename)
+
+		# Uploaded File Path
+		data_file_path = session['uploaded_data_file_path']
+		# read csv
+		df = pd.read_csv(data_file_path, encoding='unicode_escape', sep=',', engine='python')
+		uploaded_df = pd.read_csv(data_file_path,
+								encoding='unicode_escape')
+		
+		report = ProfileReport(df, title="CSV Advanced AI-Assisted Exploration", html={'style': {'full_width': True}})
+		report.to_file('./templates/ml_output.html')
+
+
+		return render_template('./upload_ok.html')
+	return render_template("./upload.html")
+
+
 @app.route('/show_data')
 def showData():
 	global filename
@@ -52,18 +82,9 @@ def showData():
 	return render_template('show_csv.html',
 						data_var=uploaded_df_html)
 
+
 @app.route('/ml_show_data')
-def show_ml_data():
-	
-	# Uploaded File Path
-	data_file_path = './staticFiles/uploads/{}'.format(filename)
-	# read csv
-	df = pd.read_csv(data_file_path, encoding='unicode_escape', sep=',', engine='python')
-	uploaded_df = pd.read_csv(data_file_path,
-							encoding='unicode_escape')
-	
-	report = ProfileReport(df, title="CSV Advanced AI-Assisted Exploration", html={'style': {'full_width': True}})
-	report.to_file('./templates/ml_output.html')
+def show_ml_data():	
 	return render_template('ml_output.html')
 
 
