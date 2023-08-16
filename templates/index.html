@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="CSV Visualization" content="width=device-width, initial-scale=1.0">
     <title>CSV Visualization</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <table align="center">
+  <tr><td colspan=2>
+    <img src="oracle_logo.png" align="center" height="30" width="250">
     <h1>CSV Visualization</h1>
     <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
         <input type="file" name="file" accept=".csv">
         <input type="submit" value="Upload">
     </form>
+    </td></tr>
+    <tr><td colspan=2>
     {% if success %}
         <div class="success-message">
             File uploaded successfully!
         </div>
     {% endif %}
-    <div class="charts">
-        <h2>Bar Chart</h2>
-        <img src="{{ url_for('static', filename='bar_chart.png') }}" alt="Bar Chart">
-        <h2>Line Chart</h2>
-        <img src="{{ url_for('static', filename='line_chart.png') }}" alt="Line Chart">
-    </div>
+    </td></tr>
+    <tr><td>
+      <h2>Bar Chart</h2>
+      <img src="{{ url_for('static', filename='bar_chart.png') }}" alt="Bar Chart">
+    </td>
+    <td>
+      <h2>Line Chart</h2>
+      <img src="{{ url_for('static', filename='line_chart.png') }}" alt="Line Chart">
+    </td></tr>
+  </table>
 </body>
 </html>

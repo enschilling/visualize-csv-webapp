@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Uploading & Reading CSV file</title>
+        <title>Upload & evaluate a CSV file</title>
+        <meta content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<form method = "POST" enctype="multipart/form-data" action = "/">
-		<input type="file" name="file" accept=".csv">
-		<input type = "submit" value="Upload">
-	</form>
-	<form method = "POST" enctype="multipart/form-data" action = "/upload_ml">
-		<input type="file" name="file" accept=".csv">
-		<input type = "submit" value="AI Upload">
-	</form>
-	<p style="color:green;"> File uploaded successfully!! </p>
-<form action="/show_data" target="_blank">
-		<input type="submit" value="Show CSV"/>
-	</form>
-<form action="/ml_show_data" target="_blank">
-		<input type="submit" value="Show AI-Assisted CSV"/>
-	</form>
+  <table align=center>
+    <tr><td colspan=2>
+      <img src="oracle_logo.png" align="center">
+      <h1 align=center>ML Output Explorer (read CSV files)</h1>
+    </td></tr>
+    <tr><td>
+        <form method = "POST" enctype="multipart/form-data" action = "/">
+                <input type="file" name="file" accept=".csv">
+                <input type = "submit" value="Basic Upload">
+        </form>
+		<form method = "POST" enctype="multipart/form-data" action = "/upload_ml">
+			<input type="file" name="file" accept=".csv">
+			<input type = "submit" value="AI Upload">
+		</form>
+        <p style="color:green;"> File uploaded successfully!! </p>
+    </td></tr>
+    <tr><td>
+        <form action="/show_data" target="_blank">
+                <input type="submit" value="Show CSV"/>
+        </form>
+    </td></td>
+    <tr><td>
+        <form action="/ml_show_data" target="_blank">
+                <input type="submit" value="Show AI-Assisted CSV"/>
+        </form>
+    </td></tr>
+  </table>
 </body>
 </html>
